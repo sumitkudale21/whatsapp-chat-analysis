@@ -29,7 +29,7 @@ if uploaded_file is not None:
     
     if st.sidebar.button('Show analsis'):
         
-        num_messages, words, number_media_messages = fetch_stats(selected_sender,df)
+        num_messages, words, number_media_messages, links = fetch_stats(selected_sender,df)
         
         col1,col2,col3,col4=st.columns(4)
         
@@ -42,3 +42,6 @@ if uploaded_file is not None:
         with col3:
             st.header('Total media_messages')
             st.title(number_media_messages)
+        with col4:
+            st.header('Total links')
+            st.title(links)
