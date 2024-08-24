@@ -2,7 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
 from preprocessor import preprocess  # Import the preprocess function from preprocessor.py
-from helper import fetch_stats, most_busy_users, create_wordcloud
+from helper import fetch_stats, most_busy_users, create_wordcloud, most_common_words, emoji_helper
 
 # Streamlit app code
 st.sidebar.title('WhatsApp Chat Analyzer')
@@ -67,3 +67,15 @@ if uploaded_file is not None:
         fig,ax = plt.subplots()
         ax.imshow(df_wc)
         st.pyplot(fig)  
+        
+        #most_common_words
+        st.title('most_common_words')
+        m_c_df = most_common_words(selected_sender, df)
+        fig, ax = plt.subplots()
+        ax.barh(m_c_df[0], m_c_df[1])
+        #plt.xticks(rotation='vertical')
+        st.pyplot(fig)
+        #st.dataframe(m_c_df)
+        
+        # Emoji analysis
+        emoji_df = 
