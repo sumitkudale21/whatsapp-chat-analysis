@@ -78,4 +78,12 @@ if uploaded_file is not None:
         #st.dataframe(m_c_df)
         
         # Emoji analysis
-        emoji_df = 
+        st.title('emoji analysis')
+        emoji_df = emoji_helper(selected_sender, df)
+        col1, col2 = st.columns(2)
+        with col1:
+            st.dataframe(emoji_df)
+        with col2:
+            fig,ax = plt.subplots()
+            ax.pie(emoji_df[1].head(),labels=emoji_df[0].head(),autopct="%0.2f")
+            st.pyplot(fig)

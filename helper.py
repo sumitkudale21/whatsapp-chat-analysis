@@ -41,7 +41,7 @@ def create_wordcloud(selected_sender, df):
             
     
     wc = WordCloud(width=500,height=500, min_font_size=10, background_color='white')
-    temp['message'] = temp['message'].apply(remove_stop_words)
+    temp['message'] = temp['Message'].apply(remove_stop_words)
     df_wc = wc.generate(temp['Message'].str.cat(sep=' '))
     return df_wc
 def most_common_words(selected_sender, df):
